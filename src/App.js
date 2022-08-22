@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const  [input, setInput] = useState('');
+  const [input, setInput] = useState('');
   const [tarefas, setTarefas] = useState([
-    'Aprender ReactJs',
-    'Aprender Ingles!!!!'
+    "Aprender Inglês!",
+    "Aprender ReactJS!"
   ]);
+
+  useEffect(() => {
+    const tarefasStorage = localStorage.getItem('@tarefa');
+
+    if (tarefasStorage) {
+      setTarefas(JSON.parse(tarefasStorage))
+    }
+  }, [])
+
+
+  useEffect(() => {
+    localStorage.setItem('@tarefa', JSON.stringify(tarefas))
+  }, [tarefas]);
 
   function handleRegister(e) {
     e.preventDefault();
@@ -18,7 +31,7 @@ function App() {
     <div>
       <h1> Digite uma tarefa:</h1>
       <form onSubmit={handleRegister}>
-        <label for="input1">Nome:</label><br />
+        <label>Nome:</label><br />
         <input type="text" id="input1"
           placeholder="Digite uma tarefa...."
           value={input}
@@ -28,7 +41,7 @@ function App() {
       </form>
 
       <ul>
-        {tarefas.map(tarefa =>(
+        {tarefas.map(tarefa => (
           <li key={tarefa}>{tarefa}</li>
         ))}
       </ul>
@@ -38,4 +51,3 @@ function App() {
 
 export default App;
 
- 
