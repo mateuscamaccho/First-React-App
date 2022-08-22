@@ -1,0 +1,25 @@
+header {
+    /* background-color: red; */
+    height         : 60px;
+    display        : flex;
+    align-items    : center;
+    justify-content: space-around;
+    box-shadow     : .5px 5px 5px #00000080;
+    margin-bottom  : 30px;
+}
+
+header .logo {
+    font-size     : 2em;
+    letter-spacing: 1px;
+}
+
+header .menu {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    gap            : 20px;
+}
+header .menu a{
+    text-decoration: none;
+    color: #000;
+}
